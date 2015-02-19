@@ -525,11 +525,8 @@ public class PartyCommand implements CommandExecutor {
 					}
 					if(args.length>=2)
 					{
-						Party party1 = Util.getParty(p);
-						//System.out.println("Party: " + party1);
-						if( party1 == null)
+						if(Util.getParty(p) == null)
 						{
-							//System.out.println("1");
 							String partyname = args[1];
 							if(Util.getAllPartyNames().contains(partyname)){
 								Util.send(sender, ChatColor.RED+"There is a party existing with name: "+ partyname);
@@ -541,25 +538,18 @@ public class PartyCommand implements CommandExecutor {
 								party.addMember((OfflinePlayer)p, Role.leader);
 								party.setName(partyname);
 								party.setSince(Calendar.getInstance().getTimeInMillis());
-								Main.partys.add(party);
-								
+								Main.partys.add(party);								
 									if(save){										
 										Main.instance.savePartysToFile();										
 									}
 									p.sendMessage("Party created");
 									return true;
-									
-								
 							} else p.sendMessage("Party name not allowed longer then " + Main.psize);
-						}else p.sendMessage("You are already in a party");
-						
-					}
-					
+						}else p.sendMessage("You are already in a party");						
+					}					
 					return true;
-				}
-				
-			}
-		
+				}				
+			}		
 	return false;
 }
 		

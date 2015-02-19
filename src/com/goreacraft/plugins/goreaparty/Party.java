@@ -1,11 +1,13 @@
 package com.goreacraft.plugins.goreaparty;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -21,6 +23,7 @@ public class Party {
 	private boolean ff = false;
 	private boolean xp = true;
 	private long since;
+	private List<OfflinePlayer> turn = new ArrayList<OfflinePlayer>();
 	private List<OfflinePlayer> invites = new ArrayList<OfflinePlayer>();
 	
 	public Party(){		
@@ -120,7 +123,8 @@ public class Party {
 		return loot;
 	}
 
-	public void setLootOption(Loot loot) {		
+	public void setLootOption(Loot loot) {	
+		turn.clear();
 		this.loot = loot;
 		
 	}
@@ -137,38 +141,80 @@ public class Party {
 		return null;
 	}
 
+	private List<OfflinePlayer> clean(List<Player> plist) {
+		List<OfflinePlayer> clean = new ArrayList<OfflinePlayer>();
+		for(Player p:plist){
+			if(!turn.contains((OfflinePlayer) p)){
+				clean.add(p);
+			}
+		}
+		System.out.println("Dirty: "+ StringUtils.join(Util.makeNamesList(turn),", "));
+		System.out.println("Clean: "+ StringUtils.join(Util.makeNamesList(clean),", "));
+		return clean;
+	}
 	
-	public boolean giveItems(List<Player> plist, List<ItemStack> list, Player damager){
-		
+	public boolean giveItems(List<Player> plist, List<ItemStack> items, Player damager){
+		Player winer = null;
 		switch(loot){
-		case byturn:
-			giveItems2(plist,list);
-			break;
-		case leader:
+		case byturn: {
+			if(plist.size()>1){
+			List<OfflinePlayer> clean = clean(plist);
+			if(clean.isEmpty()){
+				System.out.println("Clean is emptie");
+				turn.removeAll(plist);
+				clean.addAll(plist);
+				System.out.println("Clean now: "+ StringUtils.join(Util.makeNamesList(clean),", "));
+			}					
+			/*if(clean.size()>1){
+				Collections.shuffle(clean);
+				}*/
+			winer = (Player) clean.get(0);
+			} else {
+				winer = damager;
+			}
+			HashMap<Integer, ItemStack> rest = winer.getInventory().addItem( items.toArray(new ItemStack[items.size()]));
+			if(!rest.isEmpty()) 
+				for(int i:rest.keySet() )
+					winer.getWorld().dropItem(winer.getLocation(), rest.get(i));
+			sendMessageAll(ChatColor.YELLOW+winer.getName()+ " won byturn "+ Util.longToDate(Calendar.getInstance().getTimeInMillis()));
+			//giveItems2(plist,items);
+			turn.add(winer);
+		}
+			return true;
+		case leader: {
 			//if leader near
 			OfflinePlayer offleader = this.getLeader();
-			Player winer = null;
 			
-			if(list.contains(offleader)){
-				winer = ((Player)offleader);
+			if(plist.contains(offleader)){
+				winer = (Player) offleader;
 			} else winer = damager;
 			
-			HashMap<Integer, ItemStack> rest = winer.getInventory().addItem((ItemStack[]) list.toArray());
+			HashMap<Integer, ItemStack> rest = winer.getInventory().addItem( items.toArray(new ItemStack[items.size()]));
 					if(!rest.isEmpty()) 
 						for(int i:rest.keySet() )
 							winer.getWorld().dropItem(winer.getLocation(), rest.get(i));
-			break;
-		case random:
-			giveItems2(getOnlinePlayersByRank(Role.member),list);
-			break;
+			}
+		sendMessageAll(ChatColor.YELLOW+ winer.getName()+ " won leader "+ Util.longToDate(Calendar.getInstance().getTimeInMillis()));
+			return true;
+		case random: {
+			if(plist.size()>1)
+				Collections.shuffle(plist);
+				
+			winer = plist.get(0);
+			HashMap<Integer, ItemStack> rest = winer.getInventory().addItem( items.toArray(new ItemStack[items.size()]));
+				if(!rest.isEmpty()) 
+					for(int i:rest.keySet() )
+						winer.getWorld().dropItem(winer.getLocation(), rest.get(i));
+			}
+		sendMessageAll(ChatColor.YELLOW+winer.getName()+ " won random " + Util.longToDate(Calendar.getInstance().getTimeInMillis()));
+			return true;
 		case ffa:
-		default:
-			break;		
+			return false;		
 		}
 		
-		return true;
+		return false;
 	}
-	
+
 	List<OfflinePlayer> getOfflinePlayersByRank(Role rank){
 		List<OfflinePlayer> list = new ArrayList<OfflinePlayer>();
 		for(OfflinePlayer p:getMembers())

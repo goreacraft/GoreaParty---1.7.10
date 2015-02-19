@@ -172,5 +172,12 @@ public class Util {
 		return sdf.format(date);
 
 	}
+
+	public static String[] makeNamesListPlayers(List<Player> list) {
+		List<OfflinePlayer> temp =new ArrayList<OfflinePlayer>();
+		temp.addAll(list);
+		return makeNamesList(temp);
+
+	}
 	
 }

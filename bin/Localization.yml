@@ -162,7 +162,7 @@ chat:
 list:
 - List partys
 info:
-- More info about partys (party name is optional)
+- More info about partys
 kick:
 - Kick a player form your party
 leave:

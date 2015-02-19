@@ -74,7 +74,9 @@ public class Main extends JavaPlugin {
       	debugFile = new File(getDataFolder(), "Debug.yml");
       	loadconfigs();      	
       	commandhandler();
-      	if(getConfig().getBoolean("Load partys", true)) loadPartys(); 
+      	if(getConfig().getBoolean("Load partys", true)){      		
+      		loadPartys(); 
+      	}
     }
 	public static void loadconfigs()
 	{
@@ -95,7 +97,10 @@ public class Main extends JavaPlugin {
 	public void onDisable()
     {
 		PluginDescriptionFile pdfFile = this.getDescription();
-		if(savePartysToFile())this.logger.info(pdfFile.getName() + " saved partys file!");
+		if(savePartysToFile()){
+			this.logger.info(pdfFile.getName() + " saved partys file!");
+			partys.clear();
+		}
 		else this.logger.info(pdfFile.getName() + " saving partys file failed!");
 
     	this.logger.info(pdfFile.getName() + " Version " + pdfFile.getVersion() + " has been disabled!" + pdfFile.getWebsite());
@@ -108,8 +113,7 @@ public class Main extends JavaPlugin {
 		Bukkit.getPluginCommand(command).setExecutor(ce);
 	}
 	public void commandhandler(){		
-		setExecutor("party", new PartyCommand(this));
-		setExecutor("p", new PartyCommand(this));
+		setExecutor("goreaparty", new PartyCommand(this));
 	}
 	
 	static Player findPlayerByString(String name) 

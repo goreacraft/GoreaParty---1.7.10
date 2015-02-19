@@ -5,14 +5,11 @@ version: 1.3
 website: http://www.goreacraft.com
 description: Best plugin!
 commands:
-  party: 
-    aliases: [gparty]  
+  goreaparty: 
+    aliases: [party, p, gparty]  
     description: GoreaCraft version of party plugin!
     default: false
     usage: More info on '/party help'
-  p:   
-    description: GoreaCraft version of party plugin!
-    default: true
-    usage: More info on '/party help'
+
   
 

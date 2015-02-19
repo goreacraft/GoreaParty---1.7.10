@@ -9,10 +9,12 @@ public enum Role {
 	
 	private int power;
 	private ChatColor color;
+	
 	Role(int power){
 		this.setPower(power);
 		//this.color=ChatColor.RESET;
 	}
+	
 	Role(int power, ChatColor color){
 		this.setPower(power);
 		this.setColor(color);
