@@ -13,9 +13,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-*.jardesc
-.gitattributes
-.gitignore
 
 
 
@@ -46,3 +43,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.jardesc
+bin
+/bin
