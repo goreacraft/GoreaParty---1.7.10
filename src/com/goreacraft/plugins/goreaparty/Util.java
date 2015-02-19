@@ -59,7 +59,7 @@ public class Util {
 
 	public static Party getParty(OfflinePlayer p) {
 		for(Party party:Main.partys)
-			if(party.getMembers().contains(p))
+			if(party.getMembers().contains( p))
 				return party;
 		return null;
 	}

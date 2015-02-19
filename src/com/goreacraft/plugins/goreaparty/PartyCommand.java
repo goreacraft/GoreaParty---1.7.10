@@ -47,7 +47,7 @@ public class PartyCommand implements CommandExecutor {
 				{
 				Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
 				
-				Party party = Util.getParty(p);
+				Party party = Util.getParty((OfflinePlayer)p);
 					if(party!=null)
 					{
 						party.removeMember(p);
@@ -100,7 +100,7 @@ public class PartyCommand implements CommandExecutor {
 				if(args[0].equalsIgnoreCase("chat") || args[0].equalsIgnoreCase("c"))
 				{
 					Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
-					if(Util.getParty(p) != null)
+					if(Util.getParty((OfflinePlayer)p) != null)
 					{
 						if(!ChatEvent.chat.contains(p.getUniqueId()))
 						{
@@ -157,7 +157,7 @@ public class PartyCommand implements CommandExecutor {
 					{	
 						Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
 						
-						party = Util.getParty(p);
+						party = Util.getParty((OfflinePlayer)p);
 						if(party==null)
 						{
 							Util.sendOrMail(sender, Localization.getList("You Not In Party"), p.getName(),p.getName());
@@ -184,9 +184,6 @@ public class PartyCommand implements CommandExecutor {
 					for(Role rank:Role.values()){
 						Util.send(sender, ChatColor.GRAY + "" + ChatColor.ITALIC + rank.toString().toUpperCase()+": " + StringUtils.join(party.getOfflinePlayersByRankAndColor(rank).toArray()));
 					}
-					//Util.send(sender, ChatColor.GRAY + "" + ChatColor.ITALIC + "Leader: " + party.getLeader().getName());
-					//Util.send(sender, ChatColor.GRAY + "" + ChatColor.ITALIC + "Officers: " + StringUtils.join(Util.makeNamesList(party.getOfflinePlayersByRank(Role.officer))));
-					//Util.send(sender, ChatColor.GRAY + "" + ChatColor.ITALIC + "Members: " + StringUtils.join(Util.makeNamesList(party.getOfflinePlayersByRank(Role.member))));
 					Util.send(sender, ChatColor.GRAY + "" + ChatColor.ITALIC + "Invites: " + StringUtils.join(Util.makeNamesList(party.getInvites())));
 					Util.send(sender, ChatColor.GRAY + "" + ChatColor.ITALIC + "Founded on: " + Util.longToDate(party.getSince()));
 					
@@ -199,7 +196,7 @@ public class PartyCommand implements CommandExecutor {
 					
 					if(args.length==1)return false;
 					
-					Party party = Util.getParty(p);
+					Party party = Util.getParty((OfflinePlayer)p);
 					if(party==null)
 					{
 						Util.sendOrMail(sender, Localization.getList("Player Not In Party"), p.getName(),p.getName());
@@ -246,7 +243,7 @@ public class PartyCommand implements CommandExecutor {
 					Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
 					if(args.length==1)return false;					
 					
-					Party party = Util.getParty(p);
+					Party party = Util.getParty((OfflinePlayer)p);
 					if(party==null)
 					{
 						Util.sendOrMail(sender, Localization.getList("You Are Not In Party"), p.getName());
@@ -302,7 +299,7 @@ public class PartyCommand implements CommandExecutor {
 					Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
 					if(args.length==1)return false;					
 					
-					Party party = Util.getParty(p);
+					Party party = Util.getParty((OfflinePlayer)p);
 					if(party==null)
 					{
 						Util.sendOrMail(sender, Localization.getList("You Are Not In Party"), p.getName());
@@ -345,7 +342,7 @@ public class PartyCommand implements CommandExecutor {
 				if(args[0].equalsIgnoreCase("loot"))
 				{
 					Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
-					Party party = Util.getParty(p);
+					Party party = Util.getParty((OfflinePlayer)p);
 					if(party==null)
 					{
 						Util.sendOrMail(sender, Localization.getList("You Are Not In Party"), p.getName());
@@ -363,7 +360,7 @@ public class PartyCommand implements CommandExecutor {
 				if(args[0].equalsIgnoreCase("ff"))
 				{
 					Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
-					Party party = Util.getParty(p);
+					Party party = Util.getParty((OfflinePlayer)p);
 					if(party==null)
 					{
 						Util.sendOrMail(sender, Localization.getList("You Are Not In Party"), p.getName());
@@ -382,7 +379,7 @@ public class PartyCommand implements CommandExecutor {
 				if(args[0].equalsIgnoreCase("xp"))
 				{
 					Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
-					Party party = Util.getParty(p);
+					Party party = Util.getParty((OfflinePlayer)p);
 					if(party==null)
 					{
 						Util.sendOrMail(sender, Localization.getList("You Are Not In Party"), p.getName());
@@ -401,7 +398,7 @@ public class PartyCommand implements CommandExecutor {
 				if(args[0].equalsIgnoreCase("rename"))
 				{
 					Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
-					Party party = Util.getParty(p);
+					Party party = Util.getParty((OfflinePlayer)p);
 					if(party==null)
 					{
 						Util.sendOrMail(sender, Localization.getList("You Are Not In Party"), p.getName());
@@ -435,7 +432,7 @@ public class PartyCommand implements CommandExecutor {
 					Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
 					if(args.length==1)return false;					
 					
-					Party party = Util.getParty(p);
+					Party party = Util.getParty((OfflinePlayer)p);
 					if(party==null)
 					{
 						Util.sendOrMail(sender, Localization.getList("You Are Not In Party"), p.getName());
@@ -473,7 +470,7 @@ public class PartyCommand implements CommandExecutor {
 				{
 					Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
 					
-					Party party = Util.getParty(p);
+					Party party = Util.getParty((OfflinePlayer)p);
 						if( party != null){
 							Util.sendOrMail(sender, Localization.getList("Player Already In Party"), p.getName(), party.getName());
 							return true;
@@ -525,7 +522,7 @@ public class PartyCommand implements CommandExecutor {
 					}
 					if(args.length>=2)
 					{
-						if(Util.getParty(p) == null)
+						if(Util.getParty((OfflinePlayer)p) == null)
 						{
 							String partyname = args[1];
 							if(Util.getAllPartyNames().contains(partyname)){
