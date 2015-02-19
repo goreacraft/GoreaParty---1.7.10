@@ -141,7 +141,16 @@ No Party Create Permission:
 - 'You dont have the permission to create a party : %2$s'
 
 
+Create Party Permission:
+- gorea.party.create
 
+Op Party Permission:
+- gorea.party.op
+
+Message No Command Permission:
+- You are not allowed to use this command, try eating more potatoes
+
+# HELP COMMENTS
 create: 
 - Creates a new party     
 invite:

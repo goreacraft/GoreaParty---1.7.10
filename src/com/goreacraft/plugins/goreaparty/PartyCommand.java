@@ -19,17 +19,8 @@ public class PartyCommand implements CommandExecutor {
 	public PartyCommand(Main plugin) {
 		plugin = Main.instance;
 		}
-	//public static YamlConfiguration party=new YamlConfiguration();
-	//public static HashMap<String,String> players = new HashMap<String,String>();
-	//public static HashMap<Integer,String[]> invites = new HashMap<Integer,String[]>();
-	//public static HashMap<String,Integer> roles = new HashMap<String,Integer>();
-	
-	//List<String> roleinvite = Arrays.asList("Leader", "Officer");
-	//List<String> rolekick = Arrays.asList("Leader", "Officer");
-	//static YamlConfiguration party= Main.party;
-	//YamlConfiguration players= Main.players;
+
 	boolean save = Main.instance.getConfig().getBoolean("Save to file on every change",false);
-	//int mps = Main.mps;
 	
 	
 	@Override
@@ -525,9 +516,10 @@ public class PartyCommand implements CommandExecutor {
 				if(args[0].equalsIgnoreCase("create"))
 				{
 					Player p = getPlayer(sender); if( p==null){Util.send(sender, "Player only command"); return true;}
-					if(!p.hasPermission("gorea.party.create") && !p.isOp())
+					String perm = Localization.get("Create Party Permission");
+					if(!p.hasPermission(perm) && !p.isOp())
 					{
-						Util.sendOrMail(sender, Localization.getList("No Party Create Permission"), p.getName(), "gorea.party.create");
+						Util.sendOrMail(sender, Localization.getList("No Party Create Permission"), p.getName(), perm);
 						return true;
 						
 					}
@@ -582,9 +574,9 @@ public class PartyCommand implements CommandExecutor {
 
 	private static boolean isAllowed(CommandSender sender) {
 		if(sender instanceof Player){
-			if(((Player)sender).isOp()) return true;
+			if(((Player)sender).isOp() || ((Player)sender).hasPermission(Localization.get("Op Party Permission"))) return true;
 			else {
-				Util.send(sender, "You are not allowed to use this command");
+				Util.send(sender, Localization.get("Message No Command Permission"));
 				return false;
 			}
 		} 		

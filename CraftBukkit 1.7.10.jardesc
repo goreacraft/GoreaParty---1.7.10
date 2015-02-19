@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="D:/development/Bukkit 1.7.10/CraftBukkit server/plugins/GoreaParty2.0.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/GoreaParty - 1.7.10/CraftBukkit 1.7.10.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <file path="/GoreaParty - 1.7.10/.classpath"/>
+        <file path="/GoreaParty - 1.7.10/.project"/>
+        <javaElement handleIdentifier="=GoreaParty - 1.7.10/src"/>
+        <file path="/GoreaParty - 1.7.10/Bukkit.jardesc"/>
+    </selectedElements>
+</jardesc>
