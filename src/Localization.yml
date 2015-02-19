@@ -1,0 +1,183 @@
+
+# %1$s sender name, %2$s party name
+No Invite Permission: 
+- You dont have permission to invite in this party!
+ 
+# %1$s sender name, %2$s party name
+No Loot Permission: 
+- You dont have permission to change loot type in this party!
+ 
+# %1$s sender name, %2$s party name, %3$s target rank, %4$s target next rank, %5$s target name
+No Promote Permission: 
+- You dont have permission to promote %3$s to %4$s!
+
+# %1$s sender name, %2$s party name, %3$s target rank, %4$s target next rank, %5$s target name
+No FF Permission: 
+- You dont have permission to change FriendlyFire mode!
+
+# %1$s sender name, %2$s party name, %3$s target rank, %4$s target next rank, %5$s target name
+No XP Permission: 
+- You dont have permission to change XP mode!
+
+# %1$s sender name, %2$s party name, %3$s target rank, %4$s target next rank, %5$s target name
+No Demote Permission: 
+- You dont have permission to demote %3$s to %4$s!
+
+# %1$s sender name, %2$s party name, %3$s target rank, %4$s target next rank, %5$s target name
+No Rename Permission: 
+- You dont have permission to rename party name!
+
+# %1$s sender name, %2$s party name, %3$s target rank, %4$s target next rank, %5$s target name
+No Point Demote: 
+- No point to demote %3$s to %4$s!
+
+# %1$s player who changes, %2$s old loot, %3$s new loot, %4$s party name
+Party Loot Change: 
+- Player %1$s changed loot mode from %2$s to %3$s.
+
+# %1$s player who changes, %2$s old ff, %3$s new ff, %4$s party name
+Party FF Change: 
+- Player %1$s changed FriendlyFire mode from %2$s to %3$s.
+
+# %1$s player who changes, %2$s old name, %3$s new name
+Party Name Change: 
+- Player %1$s changed party name to %3$s.
+
+# %1$s player who changes, %2$s old ff, %3$s new ff, %4$s party name
+Party XP Change: 
+- Player %1$s changed Xp mode from %2$s to %3$s.
+
+# %1$s newleader name, %2$s old leader name, %3$s party name, %4$s party size
+Leader Left Party:
+- "Old leader %2$s left, party has a new leader: %1$s"
+
+# %1$s sender name, %2$s target name
+Player Not In Party:
+- '%2$s not in any party'
+
+# %1$s sender name
+You Not In Party:
+- You are not in any party, see '/p help'
+
+# %1$s sender name, %2$s party name, %3$s target name, %4$s party name
+Player Not In Your Party:
+- Player %3$s not in your party
+
+# %1$s sender name, %2$s party name, %3$s party size
+Max Party Size Reached:
+- 'Party %2$s has reached maximum size allowed: %3$s'
+
+# %1$s sender name, %2$s target name
+No Player With This Name:
+- There is no player '%2$s' registered on this server
+
+# %1$s target name, %2$s sender name, %3$s sender party name
+Party Invite:
+- You have been invited in party %3$s by %2$s, see a list of invites with '/party join'
+- To join use '/p join %3$s' or seemore info about it with '/p info %3$s'
+
+# %1$s target name, %2$s sender name, %3$s sender party name
+Party Invite Send:
+- You have send a party invitation to %1$s
+
+# %1$s target name, %2$s sender name, %3$s sender party name
+Party Invite Exists:
+- Player has an invitation for your town already
+
+# %1$s sender name, %2$s party name, %3$s max invites list size, %4$s invites list size
+Party Invite Max Reached:
+- You have reached the maximum %3$s invitations you can send at once, see '/p inivites'
+
+# %1$s target player name, %2$s target player party name
+Player Already In Party:
+- Player %1$s is alerady in party %2$s
+
+# %1$s player name, %2$s party name, %3$s party size
+Member Party Leave:
+- Player %1$s left the party %2$s, party now have %3$s members.
+
+# %1$s player name, %2$s party name, %3$s party size
+Party Leave:
+- You have left party %2$s.
+
+# %1$s player name, %2$s party name
+Party Ruined:
+- You have left party %2$s in ruin.
+
+# %1$s player name
+No Party Invitations:
+- You have no party invitation
+
+# %1$s player name, %2$s list of invitations
+List Party Invitations:
+- '%1$s party invitations: %2$s'
+
+# %1$s player name, %2$s party name
+No Party Invitations From:
+- You have no invitation from 
+
+# %1$s player name, %2$s party name, %3$s all partys names
+No Party With This Name: 
+- No party registered with name %2$s
+
+# %1$s player name, %2$s target name, %3$s party name 
+How To Promote Leader:
+- Use command '/party promote %2$s leader' to give party leadership to %2$s
+
+# %1$s player name, %2$s player rank, %3$s party name, %4$s party size, %5$s max party size
+Party New member Message:
+- Welcome new player %1$s, party size now is %4$s
+
+# %1$s player name, %2$s player rank, %3$s party name, %4$s rank to upgrade to
+Fail Rank Promote Rank:
+- 'You are not allowed to promote to %4$s'
+
+# %1$s sender name, %2$s sender rank, %3$s target name, %4$s target rank
+Fail Rank Kick Rank:
+- Player %1$s with rank %2$s is not allowed to kick %3$s with rank %4$s
+
+# %1$s sender name, %2$s permission
+No Party Create Permission:
+- 'You dont have the permission to create a party : %2$s'
+
+
+
+create: 
+- Creates a new party     
+invite:
+- Invite a player to your party
+join:
+- Join a party or list your invitations
+chat:
+- Toggle party chat
+list:
+- List partys
+info:
+- More info about partys (party name is optional)
+kick:
+- Kick a player form your party
+leave:
+- Leave your party
+promote:
+- Set promote party ranks
+demote:
+- Set demote party ranks
+loot: 
+- Toggle loot option
+xp: 
+- Toggle xp sharing
+ff: 
+- Toggle FriendlyFire
+reload:
+- Reloads the config file
+load:
+- Loads partys from file to memmory
+save:
+- Saves partys from memmory to file
+rename:
+- Rename party
+ranks:
+- display ranks
+OpHelp:
+- More info for Op players only
+

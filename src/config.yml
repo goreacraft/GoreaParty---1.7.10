@@ -1,0 +1,18 @@
+ChechUpdates: true
+Debug: false
+Load partys: true
+Invite time: 1200
+Save to file on every change: true
+Max party size: 10
+Max party invitations: 10
+Max party names size: 10
+Party chat enable: true
+EntityDeathEvent: true
+DamageEvent: true
+Max party radious: 32
+FriendlyFire: false
+# 
+Xp percent per party member: 2
+Xp percent for party: 0
+Xp random percent: 5
+LocalizationFile: Localization.yml
